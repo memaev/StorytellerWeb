@@ -5,42 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Storyteller</title>
     <link rel="stylesheet" href="styles.css"/>
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <div class="sidebar">
-        <div class="title-div">
-            <img src="./assets/icon.svg" alt="website-icon" id="website-icon"/>
-            <h1> Storyteller </h2>
-        </div>
+    <nav class="sidebar">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="./assets/icon.svg" alt="icon"/>
+                </span>
 
-        <div class="navigation-items">
-            <ul>
-                <li class="navigation-item" id="selected-item">
-                    <a href="notifications.xml"> 
-                        <div style="display: flex; align-items: center;gap:1rem;">
-                            <img src="./assets/feed_icon.svg" alt="Feed" style="width: 33px; height: 33px;"/>
-                            <h3> Feed </h3>
-                        </div>
+                <div class="text header-text">
+                    <span class="name">Storyteller</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-book-alt icon'></i>
+                            <span class="text nav-text">Feed</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-bell icon'></i>
+                            <span class="text nav-text">Notifications</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-face icon'></i>
+                            <span class="text nav-text">Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bottom-content">
+                <li class="">
+                    <a href="#">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text">Log Out</span>
                     </a>
                 </li>
-                <li class="navigation-item">
-                    <a href="notifications.xml"> 
-                        <div style="display: flex; align-items: center;gap:1rem;">
-                            <img src="./assets/notifications_icon.svg" alt="Feed" style="width: 33px; height: 33px;"/>
-                            <h3> Notifications </h3>
-                        </div>
-                    </a>
+
+                <li class="mode">
+                    <div class="moon-sun">
+                        <i class="bx bx-moon icon moon"></i>
+                    </div>
+
+                    <span class="mode-text text"> Dark Mode </span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
                 </li>
-                <li class="navigation-item">
-                    <a href="notifications.xml"> 
-                        <div style="display: flex; align-items: center;gap:1rem;">
-                            <img src="./assets/profile_icon.svg" alt="Feed" style="width: 33px; height: 33px;"/>
-                            <h3> Profile </h3>
-                        </div>
-                    </a>
-                </li>
-            </ul>
+            </div>
         </div>
-    </div>
+    </nav>
+
+    <section class="home">
+        <div class="text"> Dashboard </div>
+    </section>
+
+    <script src="script.js"></script>
 </body>
 </html>
