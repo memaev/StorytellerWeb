@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="auth-styles.css">
 </head>
 
-<body>
+<body>  
+
     <main>
         <div class="box">
             <div class="inner-box">
                 <div class="forms-wrap">
-                    <form action="auth.html" autocomplete="off" class="sign-in-form">
+                    <form action="feed.html" autocomplete="off" class="sign-in-form">
                         <div class="logo">
                             <img src="/assets/icon.svg" alt="Storyteller">
                             <h1>Storyteller</h1>
@@ -27,9 +28,9 @@
 
                         <div class="actual-form">
                             <div class="input-wrap">
-                                <input type="text" minlength="4" class="input-field" autocomplete="off" required />
+                                <input type="email" minlength="4" class="input-field" autocomplete="off" required />
 
-                                <label>Name</label>
+                                <label>Email</label>
                             </div>
 
                             <div class="input-wrap">
@@ -38,7 +39,7 @@
                                 <label>Password</label>
                             </div>
 
-                            <input type="submit" value="Sign In" class="sign-btn" />
+                            <button type="button" class="sign-btn" onclick="login()"> Sign In </button>
 
                             <p class="text">
                                 Forgotten your password or your login details?
@@ -83,9 +84,9 @@
                             <input type="submit" value="Sign Up" class="sign-btn" />
 
                             <p class="text">
-                                By signing up, I agree to the 
+                                By signing up, I agree to the
                                 <a href="#">Terms of Services</a>
-                                and 
+                                and
                                 <a href="#">Privacy Policy</a>
                             </p>
                         </div>
@@ -93,9 +94,9 @@
                 </div>
                 <div class="carousel">
                     <div class="images-wrapper">
-                        <img src="/assets/image1.png" class="image img-1 show" alt=""/>
-                        <img src="/assets/image2.png" class="image img-2" alt=""/>
-                        <img src="/assets/image3.png" class="image img-3" alt=""/>
+                        <img src="/assets/image1.png" class="image img-1 show" alt="" />
+                        <img src="/assets/image2.png" class="image img-2" alt="" />
+                        <img src="/assets/image3.png" class="image img-3" alt="" />
                     </div>
 
                     <div class="text-slider">
@@ -117,7 +118,38 @@
         </div>
     </main>
 
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js" type="module"></script>
+    
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        // import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        // import {getDatabase} from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBZNYifsu-YQUbDY_gjPS-PB6aBaLrWXSk",
+          authDomain: "storiesapp-b9fad.firebaseapp.com",
+          databaseURL: "https://storiesapp-b9fad-default-rtdb.firebaseio.com",
+          projectId: "storiesapp-b9fad",
+          storageBucket: "storiesapp-b9fad.appspot.com",
+          messagingSenderId: "359429738160",
+          appId: "1:359429738160:web:efc01da509587c0de13575",
+          measurementId: "G-7JN6HLBSZB"
+        };
+      
+        // Initialize Firebase
+        // const app = initializeApp(firebaseConfig);
+        firebase.initializeApp(firebaseConfig);
+
+        firebase.database().ref('jj').set('k');
+      </script>
     <script src="auth.js"></script>
+    
 </body>
 
 </html>

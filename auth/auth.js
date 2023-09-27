@@ -1,9 +1,26 @@
+document.addEventListener("DOMContentLoaded", function() {
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            // User is signed in.
+            console.log("User is signed in:", user.uid);
+
+            window.location.href = '../feed.html';
+            // You can access user information like user.uid, user.email, etc.
+        } else {
+            // No user is signed in.
+            console.log("No user is signed in.");
+        }
+    });
+});
+
 const inputs = document.querySelectorAll(".input-field");
 const toggle_btn = document.querySelectorAll(".toggle")
 const main = document.querySelector("main")
 const bullets = document.querySelectorAll(".bullets span");
 const images = document.querySelectorAll(".image");
 const textSlider = document.querySelector(".text-group");
+const signInBtn = document.getElementById("sign-in-btn");
+const signInForm = document.getElementById(".sign-in-form");
 
 inputs.forEach(inp =>{
     inp.addEventListener("focus", ()=>{
@@ -20,6 +37,7 @@ toggle_btn.forEach(btn => {
         main.classList.toggle("sign-up-mode");
     });
 });
+
 
 function moveSlider(){
     let index = this.dataset.value;
@@ -38,3 +56,15 @@ function moveSlider(){
 bullets.forEach(bullet =>{
     bullet.addEventListener("click", moveSlider);
 })
+
+function login(){
+    firebase.auth().signInWithEmailAndPassword(inputs[0].value, inputs[1].value)
+        .then((userCred) => {
+            const user = userCred.user;
+
+            window.location.href = '../feed.html';
+        })
+        .catch((error) => {
+            console.log(error.message);
+        });
+}
