@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // User is signed in.
             console.log("User is signed in:", user.uid);
 
-            window.location.href = '../feed.html';
+            window.location.href = '../feed/feed.html';
             // You can access user information like user.uid, user.email, etc.
         } else {
             // No user is signed in.
@@ -62,7 +62,7 @@ function login(){
         .then((userCred) => {
             const user = userCred.user;
 
-            window.location.href = '../feed.html';
+            window.location.href = '../feed/feed.html';
         })
         .catch((error) => {
             console.log(error.message);
