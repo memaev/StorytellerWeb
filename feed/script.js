@@ -1,3 +1,17 @@
+document.addEventListener("DOMContentLoaded", function() {
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (!user) {
+            // User is signed in.
+            console.log("User is not signed in:");
+
+            window.location.href = '../auth/auth.html';
+        } else {
+            // No user is signed in.
+            console.log("User is signed in.", user.uid);
+        }
+    });
+});
+
 const firebaseConfig = {
     apiKey: "AIzaSyBZNYifsu-YQUbDY_gjPS-PB6aBaLrWXSk",
     authDomain: "storiesapp-b9fad.firebaseapp.com",
@@ -9,10 +23,7 @@ const firebaseConfig = {
     measurementId: "G-7JN6HLBSZB"
 };
 
-// Initialize Firebase
-// const app = initializeApp(firebaseConfig);
 firebase.initializeApp(firebaseConfig);
-
 
 const body = document.querySelector("body")
     sidebar = body.querySelector(".sidebar"),
