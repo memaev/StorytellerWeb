@@ -1,0 +1,112 @@
+:root{
+    --additional-color: #7E6DE4;
+}
+
+*{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 300;
+}
+
+.story-item {
+    height: fit-content;
+    width: 40%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+    background-color: white;
+    margin-left: 15vw;
+    padding-bottom: 2vh;
+}
+
+.story-title {
+    margin-top: 2vh;
+    margin-left: 2vw;
+    font-size: 1.5rem;
+    white-space: nowrap;
+}
+
+.story-release-date {
+    margin-top: 2vh;
+    margin-right: 2vw;
+    height: fit-content;
+    font-size: 18px;
+    text-align: right;
+    color: #888;
+}
+
+.title-date-div {
+    width: 100%;
+    flex-direction: row;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.story-image {
+    width: 98%;
+    margin-top: 2%;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.comment-btn{
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+}
+
+.comment-btn img{
+    width: 4vw;
+    height: 4vh;
+}
+
+.like-btn{
+    gap: 0.5vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+}
+
+.like-btn i{
+    color: black;
+    font-size: 4vh;
+}
+
+.like-btn i.clicked{
+    color: var(--additional-color);
+}
+
+.story-buttons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1vw;
+    position: relative;
+}
+
+.read-btn{
+    background: var(--additional-color);
+    border-radius: 50px;
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.read-btn img{
+    background-color: var(--additional-color);
+    width: 3vh;
+}
+
+.bottom-actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
