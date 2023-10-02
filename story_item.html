@@ -13,28 +13,108 @@
 </head>
 
 <body>
-    <div class="story-item">
-        <div class="title-date-div">
-            <h2 class="story-title">Story Title</h2>
-            <h2 class="story-release-date">Release Date</h2>
+    <div class="story-comments-item">
+        <div class="story-item">
+            <div class="title-date-div">
+                <h2 class="story-title">Story Title</h2>
+                <h2 class="story-release-date">Release Date</h2>
+            </div>
+    
+            <div>
+                <img src="./assets/image1.png" alt="Story Image" class="story-image">
+            </div>
+            <div class="bottom-actions">
+                <div class="story-buttons">
+                    <button class="comment-btn">
+                        <i class='bx bx-comment'></i>
+                    </button>
+                    <button class="read-btn">
+                        <img src="./assets/read-icon.svg" id="read-icon-img"/>
+                    </button>
+                    <button class="like-btn">
+                        <i class='bx bxs-heart' ></i>
+                        <h4 id="likes-count">0 likes</h4>
+                    </button>
+                </div>
+            </div>
+            
         </div>
 
-        <div>
-            <img src="./assets/image1.png" alt="Story Image" class="story-image">
-        </div>
-        <div class="story-buttons">
-            <button class="comment-btn">
-                <img src="./assets/comment_icon.svg" />
-            </button>
-            <button class="read-btn">
-                <img src="./assets/read-icon.svg" id="read-icon-img"/>
-            </button>
-            <button class="like-btn">
-                <i class='bx bxs-heart' ></i>
-                <h4 id="likes-count">0 likes</h4>
-            </button>
-        </div>
+        <div class="comments">
+            <div class="comments-header">
+                <h2 id="comments-title">Comments</h2>
+                <i class='bx bx-x close-btn'></i>
+            </div>
+
+            <div class="comments-list">
+                <div class="comment">
+                    <div class="comment-header">
+                        <i class='bx bx-face'></i>
+                        <h3 class="comment-username">Username</h3>
+                    </div>
+                    <div class="comment-body">
+                        <p class="comment-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-header">
+                        <i class='bx bx-face'></i>
+                        <h3 class="comment-username">Username</h3>
+                    </div>
+                    <div class="comment-body">
+                        <p class="comment-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-header">
+                        <i class='bx bx-face'></i>
+                        <h3 class="comment-username">Username</h3>
+                    </div>
+                    <div class="comment-body">
+                        <p class="comment-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-header">
+                        <i class='bx bx-face'></i>
+                        <h3 class="comment-username">Username</h3>
+                    </div>
+                    <div class="comment-body">
+                        <p class="comment-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-header">
+                        <i class='bx bx-face'></i>
+                        <h3 class="comment-username">Username</h3>
+                    </div>
+                    <div class="comment-body">
+                        <p class="comment-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+            
     </div>
+
+    <script> 
+    //comments btn
+    const commentBtn = document.querySelector(".comment-btn");
+    const storyItem = document.querySelector(".story-item");
+    const comments = document.querySelector(".comments");
+    const closeBtn = document.querySelector(".close-btn");
+
+    commentBtn.addEventListener('click', ()=>{
+        storyItem.classList.toggle("comments-opened");
+        comments.classList.toggle("comments-opened");
+    })
+
+    closeBtn.addEventListener('click', ()=>{
+        storyItem.classList.toggle("comments-opened");
+        comments.classList.toggle("comments-opened");
+    })
+    </script>
+    
 
 </body>
 

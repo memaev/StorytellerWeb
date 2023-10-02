@@ -1,5 +1,5 @@
 class Story {
-    constructor(date, from, id, imageUrl, text, title, likes=[]) {
+    constructor(date, from, id, imageUrl, text, title, likes = []) {
         this.date = date;
         this.from = from;
         this.id = id;
@@ -74,6 +74,7 @@ function displayStories(stories) {
         //loading and displaying new story
         var storyItem = document.createElement("div");
         storyItem.innerHTML = `
+        <div class="story-comments-item">
         <div class="story-item">
         <div class="title-date-div">
             <h2 class="story-title">${story.title}</h2>
@@ -81,26 +82,108 @@ function displayStories(stories) {
         </div>
 
         <div>
-            <img src="${
-                (!story.imageUrl) ? "../assets/default-image.jpg" : story.imageUrl
+            <img src="${(!story.imageUrl) ? "../assets/default-image.jpg" : story.imageUrl
             }" alt="Story Image" class="story-image">
         </div>
         <div class="bottom-actions">
         <div class="story-buttons">
             <button class="comment-btn">
-                <img src="../assets/comment_icon.svg" />
+                <i class='bx bx-comment'></i>
             </button>
             <button class="read-btn">
                 <img src="../assets/read-icon.svg" id="read-icon-img"/>
             </button>
             <button class="like-btn">
                 <i class='bx bxs-heart ${
-                    //if this user already put his like
-                    story.likes.includes(firebase.auth().currentUser.uid) ? "clicked" : ""
-                }' ></i>
+            //if this user already put his like
+            story.likes.includes(firebase.auth().currentUser.uid) ? "clicked" : ""
+            }' ></i>
                 <h4 class="likes-count">${story.likes.length}</h4>
             </button>
         </div>
+        </div>
+    </div>
+    <div class="comments">
+            <div class="comments-header">
+                <h2 id="comments-title">Comments</h2>
+                <i class='bx bx-x close-btn'></i>
+            </div>
+
+            <div class="comments-list">
+            <div class="comment">
+                <div class="comment-header">
+                    <i class='bx bx-face'></i>
+                    <h3 class="comment-username">Username</h3>
+                </div>
+                <div class="comment-body">
+                    <p class="comment-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                </div>
+            </div>
+            <div class="comment">
+                <div class="comment-header">
+                    <i class='bx bx-face'></i>
+                    <h3 class="comment-username">Username</h3>
+                </div>
+                <div class="comment-body">
+                    <p class="comment-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                </div>
+            </div>
+            <div class="comment">
+                <div class="comment-header">
+                    <i class='bx bx-face'></i>
+                    <h3 class="comment-username">Username</h3>
+                </div>
+                <div class="comment-body">
+                    <p class="comment-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                </div>
+            </div>
+            <div class="comment">
+                <div class="comment-header">
+                    <i class='bx bx-face'></i>
+                    <h3 class="comment-username">Username</h3>
+                </div>
+                <div class="comment-body">
+                    <p class="comment-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                </div>
+            </div>
+            <div class="comment">
+                <div class="comment-header">
+                    <i class='bx bx-face'></i>
+                    <h3 class="comment-username">Username</h3>
+                </div>
+                <div class="comment-body">
+                    <p class="comment-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                </div>
+            </div>
+            <div class="comment">
+                <div class="comment-header">
+                    <i class='bx bx-face'></i>
+                    <h3 class="comment-username">Username</h3>
+                </div>
+                <div class="comment-body">
+                    <p class="comment-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                </div>
+            </div>
+            <div class="comment">
+                <div class="comment-header">
+                    <i class='bx bx-face'></i>
+                    <h3 class="comment-username">Username</h3>
+                </div>
+                <div class="comment-body">
+                    <p class="comment-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                </div>
+            </div>
+            <div class="comment">
+                <div class="comment-header">
+                    <i class='bx bx-face'></i>
+                    <h3 class="comment-username">Username</h3>
+                </div>
+                <div class="comment-body">
+                    <p class="comment-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                </div>
+            </div>
+            </div>
+            
         </div>
     </div>
         `;
@@ -109,35 +192,53 @@ function displayStories(stories) {
         const likeBtn = storyItem.querySelector('.like-btn');
         const likeImg = storyItem.querySelector('.bxs-heart');
         const likesCount = storyItem.querySelector('.likes-count')
-        likeBtn.addEventListener('click', ()=>{
-            if (story.likes.includes(firebase.auth().currentUser.uid)){
-                story.likes = story.likes.filter((element)=>element!==firebase.auth().currentUser.uid);
-                
+        likeBtn.addEventListener('click', () => {
+            if (story.likes.includes(firebase.auth().currentUser.uid)) {
+                story.likes = story.likes.filter((element) => element !== firebase.auth().currentUser.uid);
+
                 //changing likes count and toggling the like btn
                 likesCount.textContent = story.likes.length;
                 likeImg.classList.toggle('clicked');
 
                 //removing like from the DB
                 firebase.database().ref("Stories").child(story.id).child("likes")
-                    .child(firebase.auth().currentUser.uid).remove().then(()=>{
+                    .child(firebase.auth().currentUser.uid).remove().then(() => {
                         console.log("Data removed successfully");
-                    }).catch((error)=>{
+                    }).catch((error) => {
                         console.error("Error removing data: ", error);
                     })
-            }else{
+            } else {
                 //adding user's like locally
                 story.likes.push(firebase.auth().currentUser.uid);
 
                 //changing likes count and toggling the like btn
                 likesCount.textContent = story.likes.length;
                 likeImg.classList.toggle('clicked');
-                
+
                 //adding like to the DB
                 firebase.database().ref("Stories").child(story.id).child("likes")
-                .child(firebase.auth().currentUser.uid).set("");
+                    .child(firebase.auth().currentUser.uid).set("");
             }
-            
+
         });
+
+        //comments btn
+        const commentBtn = storyItem.querySelector(".comment-btn");
+        const storyItemDiv = storyItem.querySelector(".story-item");
+        const comments = storyItem.querySelector(".comments");
+        const closeBtn = storyItem.querySelector(".close-btn");
+
+        commentBtn.addEventListener('click', () => {
+            storyItemDiv.classList.toggle("comments-opened");
+            comments.classList.toggle("comments-opened");
+        })
+
+        closeBtn.addEventListener('click', () => {
+            storyItemDiv.classList.toggle("comments-opened");
+            comments.classList.toggle("comments-opened");
+        })
+
+
 
         storiesListV.appendChild(storyItem);
     });
@@ -151,15 +252,15 @@ storiesRef.once('value', function (snapshot) {
     var stories = [];
     snapshot.forEach(function (childSnapshot) {
         var likes = [];
-        if (childSnapshot.child("likes").exists()){
+        if (childSnapshot.child("likes").exists()) {
             console.log("Exists");
-            childSnapshot.child("likes").forEach(function(likesSnapshot){
+            childSnapshot.child("likes").forEach(function (likesSnapshot) {
                 likes.push(likesSnapshot.key);
             });
-        }else{
+        } else {
             console.log("Does not exist");
         }
-        
+
         stories.push(
             new Story(
                 childSnapshot.child("date").val(),
@@ -167,7 +268,7 @@ storiesRef.once('value', function (snapshot) {
                 childSnapshot.child("id").val(),
                 childSnapshot.child("imageUrl").val(),
                 childSnapshot.child("text").val(),
-                childSnapshot.child("title").val(), 
+                childSnapshot.child("title").val(),
                 likes
             )
         );
@@ -176,6 +277,9 @@ storiesRef.once('value', function (snapshot) {
     displayStories(stories);
 });
 
-function putLike(){
 
+// Function to automatically resize the textarea as content changes
+function autoResize(textarea) {
+    textarea.style.height = "auto"; // Reset height to auto
+    textarea.style.height = (textarea.scrollHeight) + "px"; // Set the new height based on content
 }

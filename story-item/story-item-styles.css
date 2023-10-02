@@ -1,5 +1,17 @@
+
+
 :root{
     --additional-color: #7E6DE4;
+    --white: white;
+    --grey: #888;
+    --text-color: black;
+
+
+    /*transition*/
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
 }
 
 *{
@@ -7,15 +19,40 @@
     font-weight: 300;
 }
 
+/* main divs holder (story and comments divs holder) */
+.story-comments-item{
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+}
+
+body{
+    transition: var(--tran-04);
+}
+
+body.dark{
+    --white: #242526;
+}
+
 .story-item {
-    height: fit-content;
-    width: 40%;
+    height: 67vh;
+    width: 40vw;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     margin: 10px;
-    background-color: white;
-    margin-left: 15vw;
+    background-color: var(--white);
+    margin-left: 18vw;
     padding-bottom: 2vh;
+    z-index: 100;
+    transition: var(--tran-04);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.story-item.comments-opened{
+    margin-left: 5vw;
+    transition: var(--tran-04);
 }
 
 .story-title {
@@ -23,6 +60,7 @@
     margin-left: 2vw;
     font-size: 1.5rem;
     white-space: nowrap;
+    color: var(--text-color);
 }
 
 .story-release-date {
@@ -31,7 +69,7 @@
     height: fit-content;
     font-size: 18px;
     text-align: right;
-    color: #888;
+    color: var(--grey);
 }
 
 .title-date-div {
@@ -43,6 +81,7 @@
 }
 
 .story-image {
+    max-height: 50vh;
     width: 98%;
     margin-top: 2%;
     border-radius: 1rem;
@@ -55,12 +94,12 @@
     appearance: none;
     border: none;
     cursor: pointer;
-    background-color: white;
+    background-color: var(--white);
 }
 
-.comment-btn img{
-    width: 4vw;
-    height: 4vh;
+.comment-btn i{
+    font-size: 3.5vh;
+    color: var(--text-color);
 }
 
 .like-btn{
@@ -71,11 +110,12 @@
     appearance: none;
     border: none;
     cursor: pointer;
-    background-color: white;
+    background-color: var(--white);
+    color: var(--text-color);
 }
 
 .like-btn i{
-    color: black;
+    color: var(--text-color);
     font-size: 4vh;
 }
 
@@ -109,4 +149,73 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+
+/* comments */
+.comments{
+    height: 67vh;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: var(--white);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: -39vw;
+    z-index: 0;
+    transition: opacity var(--tran-04) 0.5s;
+    opacity: 0;
+}
+
+.comments.comments-opened{
+    margin-left: 0vw;
+    transition: var(--tran-04);
+    opacity: 1;
+}
+
+.comment{
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1vw;
+}
+
+
+/* comments page header */
+.comments-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#comments-title{
+    margin-left: 1vw;
+    margin-top: 1vh;
+}
+
+.close-btn{
+    font-size: 3vh;
+    margin-right: 1vw;
+    margin-top: 1vh;
+}
+
+.close-btn:hover{
+    cursor: pointer;
+}
+
+.comments-list{
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    margin-bottom: 1vh;
+    overflow: auto;
 }
