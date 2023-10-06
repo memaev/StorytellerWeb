@@ -1,61 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comment</title>
 
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
+
+        :root{
+            --additional-color: #7E6DE4;
+            --additional-color-hover: #5E4BD8;
+        }
+
         /* Basic styling for the comment input */
         .comment-input {
-            width: 30vw;
+            width: fit-content;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px;
+            padding: 0.5vh 0.5vw;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 5vh;
             background-color: #fff;
             resize: vertical;
             max-height: 300px;
         }
 
         .comment-input textarea {
-            width: 300px; /* Set the desired width */
-            height: 50px;
-            min-height: 50px; /* Set the minimum height */
-            max-height: 200px; /* Set the maximum height */
+            width: 20vw;
+            /* Set the desired width */
+            height: 2vh;
+            min-height: 2vh;
+            /* Set the maximum height */
             padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            resize: none; /* Disable browser's default resizing */
-            overflow-y: auto; /* Enable vertical scrollbar when content exceeds height */
+            border: none;
+            resize: none;
+            overflow-y: auto;
             outline: none;
         }
 
         .comment-input button {
             margin-left: 10px;
             padding: 8px 15px;
-            background-color: #007bff;
+            background-color: var(--additional-color);
             color: #fff;
             border: none;
-            border-radius: 3px;
+            border-radius: 5vh;
             cursor: pointer;
         }
 
         .comment-input button:hover {
-            background-color: #0056b3;
+            background-color: var(--additional-color-hover);
+        }
+
+        .send-btn{
+            font-size: 2vh;
         }
     </style>
 </head>
+
 <body>
     <div class="comment-input">
-        <textarea class="multiline-input" placeholder="Enter multiple lines of text..." oninput="autoResize(this)"></textarea>
-        <button>Submit</button>
+        <textarea class="multiline-input" placeholder="Enter multiple lines of text..."
+            ></textarea>
+        <button><i class='bx bx-send send-btn'></i></button>
     </div>
-    
-    <script>
-        
-    </script>
 </body>
+
 </html>
