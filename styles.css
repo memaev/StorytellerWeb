@@ -234,7 +234,7 @@ body.dark .switch::before{
     left: 24px;
 }
 
-.home{
+.home, .notifications{
     position: relative;
     left: 250px;
     height: 100vh;
