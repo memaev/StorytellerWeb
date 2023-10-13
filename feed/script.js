@@ -206,13 +206,22 @@ function displayStories(stories) {
                 likesCount.textContent = story.likes.length;
                 likeImg.classList.toggle('clicked');
 
+                
+
                 //removing like from the DB
                 firebase.database().ref("Stories").child(story.id).child("likes")
-                    .child(firebase.auth().currentUser.uid).remove().then(() => {
-                        console.log("Data removed successfully");
-                    }).catch((error) => {
-                        console.error("Error removing data: ", error);
-                    })
+                    .child(firebase.auth().currentUser.uid).once("value")
+                    .then((snapshot)=>{
+                        const notificationID = snapshot.val();
+
+                        //removing like from the DB
+                        firebase.database().ref("Stories").child(story.id).child("likes")
+                            .child(firebase.auth().currentUser.uid).remove();
+
+                        //removing notification about like
+                        firebase.database().ref("Users").child(story.from).child("notifications")
+                            .child(notificationID).remove();
+                    });
             } else {
                 //adding user's like locally
                 story.likes.push(firebase.auth().currentUser.uid);
@@ -221,11 +230,30 @@ function displayStories(stories) {
                 likesCount.textContent = story.likes.length;
                 likeImg.classList.toggle('clicked');
 
-                //adding like to the DB
-                firebase.database().ref("Stories").child(story.id).child("likes")
-                    .child(firebase.auth().currentUser.uid).set("");
 
-                //sending the notification about like to the story's author
+                firebase.database().ref("Users").child(firebase.auth().currentUser.uid).child("username")
+                    .once("value").then((snapshot) => {
+                        const username = snapshot.val();
+
+                        //sending the notification about like to the story's author
+                        const notificationInfo = {};
+                        notificationInfo["from"] = firebase.auth().currentUser.uid;
+                        notificationInfo["username"] = username;
+                        notificationInfo["storyID"] = story.id;
+                        notificationInfo["type"] = "like";
+                        notificationInfo["date"] = new Date().toLocaleString();
+                        notificationInfo["text"] = "";
+
+                        //pushing data to the database
+                        firebase.database().ref("Users").child(story.from).child("notifications")
+                            .push(notificationInfo).then((snapshot) => {
+                                //adding like to the DB
+                                firebase.database().ref("Stories").child(story.id).child("likes")
+                                    .child(firebase.auth().currentUser.uid).set(snapshot.key);
+                            }).catch((error) => {
+                                console.error("Error adding data: ", error);
+                            });
+                    });
 
             }
 
@@ -292,6 +320,9 @@ function displayStories(stories) {
                 //adding an on click listener on send btn
                 sendBtn.addEventListener('click', () => {
                     if (commentInput.value.trim() !== "") {
+                        const comment = commentInput.value.trim();
+                        commentInput.value = "";
+
                         firebase.database().ref("Users").child(firebase.auth().currentUser.uid).child("username")
                             .once("value").then((snapshot) => {
                                 const username = snapshot.val();
@@ -299,7 +330,7 @@ function displayStories(stories) {
                                 //adding comment to the DB
                                 firebase.database().ref("Stories").child(story.id).child("comments")
                                     .push({
-                                        text: commentInput.value,
+                                        text: comment,
                                         username: username,
                                         date: new Date().toLocaleString(),
                                         from: firebase.auth().currentUser.uid
@@ -310,8 +341,26 @@ function displayStories(stories) {
                                     })
 
                                 loadComments(commentsList, story);
-                                commentInput.value = "";
-                            })
+
+                                //sending notification about comment
+                                const notificationInfo = {};
+                                notificationInfo["from"] = firebase.auth().currentUser.uid;
+                                notificationInfo["username"] = username;
+                                notificationInfo["storyID"] = story.id;
+                                notificationInfo["type"] = "comment";
+                                notificationInfo["date"] = new Date().toLocaleString();
+                                notificationInfo["text"] = comment;
+
+                                //pushing data to the database
+                                firebase.database().ref("Users").child(story.from).child("notifications")
+                                    .push(notificationInfo).then(() => {
+                                        console.log("Data added successfully");
+                                    }).catch((error) => {
+                                        console.error("Error adding data: ", error);
+                                    });
+
+
+                            });
 
                     }
                 });
