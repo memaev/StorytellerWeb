@@ -10,8 +10,6 @@ class Notification {
     }
 }
 
-console.log("helelee");
-
 document.addEventListener("DOMContentLoaded", function () {
     firebase.auth().onAuthStateChanged(function (user) {
         if (!user) {
@@ -71,13 +69,4 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-
-function loadComments() {
-
-    console.log("Loading notifications...");
-
-
-}
-
-console.log("hello");
 
