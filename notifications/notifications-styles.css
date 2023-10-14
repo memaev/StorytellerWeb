@@ -39,6 +39,12 @@ body.dark{
     display: inline-flex;
 }
 
+.like-notification{
+    display: flex;
+    gap: 1vh;
+    flex-direction: column;
+}
+
 .highlighted{
     color: var(--primary-color);
 }

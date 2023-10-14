@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     var notificationsList = document.querySelector("#notifications-list");
 
                     //clearing the list before adding new elements
-                    // notificationsList.innerHTML = "";
+                    notificationsList.innerHTML = "";
 
                     //reversing the array to show the latest notifications first
                     notifications.reverse();
@@ -54,12 +54,14 @@ document.addEventListener("DOMContentLoaded", function () {
                             notificationItem.innerHTML = `
                 <div class="like-notification">
                 <p class="like-notification-text"><span class="highlighted username">${notification.username}</span> liked your story: <span class="highlighted story-title">${notification.storyTitle}</span></p>
+                <p class="comment-notification-comment" style="font-size:0.7rem;">${notification.date}</p>
                 </div>`
                         } else {
                             notificationItem.innerHTML = `
                 <div class="comment-notification">
                 <p class="comment-notification-text"><span class="highlighted username">${notification.username}</span> commented on your story: <span class="highlighted story-title">${notification.storyTitle}</span></p>
                 <p class="comment-notification-comment">${notification.text}</p>
+                <p class="comment-notification-comment" style="font-size:0.7rem;">${notification.date}</p>
                 </div>`
                         }
 
