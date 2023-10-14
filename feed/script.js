@@ -315,6 +315,7 @@ function displayStories(stories) {
                                 notificationInfo["type"] = "comment";
                                 notificationInfo["date"] = new Date().toLocaleString();
                                 notificationInfo["text"] = comment;
+                                notificationInfo["storyTitle"] = story.title;
 
                                 //pushing data to the database
                                 firebase.database().ref("Users").child(story.from).child("notifications")
