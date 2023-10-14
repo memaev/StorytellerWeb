@@ -17,12 +17,12 @@ body.dark{
     --items-bg-color: #242526;
 }
 
-.notifications{
+#notifications-list{
     padding-top: 2vh;
     padding-bottom: 2vh;
     display: flex;
     flex-direction: column;
-    gap: 2vh;
+    gap: 1vh;
     font-weight: 400;
 }
 
