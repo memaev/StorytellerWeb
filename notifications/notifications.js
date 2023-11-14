@@ -21,6 +21,10 @@ document.addEventListener("DOMContentLoaded", function () {
             // user is signed in.
             console.log("User is signed in.", user.uid);
 
+            let loader = document.querySelector("#preloader")
+
+            loader.classList.toggle("invisible");
+
             firebase.database().ref("Users").child(user.uid)
                 .child("notifications").once("value", function (snapshot) {
                     var notifications = [];
@@ -69,8 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 <hr style="margin:1vw;border-top: 2px solid #bbb;
                 border-radius: 5px;width:96%;align-items: center;">
         
-                <h2 style="margin-left: 1vw;">${storyTitle}</h2>
-                <p style="margin-left: 1vw;">${storyDate}</p>
+                <h2 class="full-story-title" style="margin-left: 1vw;">${storyTitle}</h2>
+                <p class="full-story-date" style="margin-left: 1vw;">${storyDate}</p>
 
                 <div>
                     <img src=${storyImageUrl} alt="Story Image" class="story-image">
@@ -91,8 +95,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 <hr style="margin:15px;border-top: 2px solid #bbb;
                 border-radius: 5px;width:96%;">
         
-                <h2 style="margin-left: 1vw;">${storyTitle}</h2>
-                <p style="margin-left: 1vw;">${storyDate}</p>
+                <h2 class="full-story-title" style="margin-left: 1vw;">${storyTitle}</h2>
+                <p class="full-story-date" style="margin-left: 1vw;">${storyDate}</p>
 
                 <div>
                     <img src=${storyImageUrl} alt="Story Image" class="story-image">
@@ -115,7 +119,11 @@ document.addEventListener("DOMContentLoaded", function () {
                        
 
                     });
+
+                    loader.classList.toggle("invisible");
                 });
+
+            
         }
     });
 });

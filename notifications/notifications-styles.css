@@ -102,3 +102,25 @@ body.dark .highlighted{
 .story-title:hover{
     cursor: pointer;
 }
+
+main.invisible{
+    display: none;
+}
+
+#preloader {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 500;
+}
+
+#preloader.invisible{
+    display: none;
+}
+
+.full-story-title, .full-story-date, .story-text{
+    color: var(--text-color);
+}
