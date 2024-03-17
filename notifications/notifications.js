@@ -10,6 +10,7 @@ class Notification {
     }
 }
 
+
 document.addEventListener("DOMContentLoaded", function () {
     firebase.auth().onAuthStateChanged(function (user) {
         if (!user) {
@@ -35,8 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             childSnapshot.child("storyId").val(),
                             childSnapshot.child("type").val(),
                             childSnapshot.child("date").val(),
-                            childSnapshot.child("text").val(), 
-                            childSnapshot.child("storyTitle").val()
+                            childSnapshot.child("text").val()
                         ));
                     });
 
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     } else {
                             notificationItem.innerHTML = `
                 <div class="comment-notification">
-                <p class="comment-notification-text"><span class="highlighted username">${notification.username}</span> commented on your story: <span class="highlighted story-title">${notification.storyTitle}</span></p>
+                <p class="comment-notification-text"><span class="highlighted username">${notification.username}</span> commented on your story: <span class="highlighted story-title">${storyTitle}</span></p>
                 <p class="comment-notification-comment">${notification.text}</p>
                 <p class="comment-notification-comment" style="font-size:0.7rem;">${notification.date}</p>
 
