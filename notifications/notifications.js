@@ -50,8 +50,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     //reversing the array to show the latest notifications first
                     notifications.reverse();
 
-                    var notificationItem = document.createElement("div");
-
                     notifications.forEach(function (notification) {
                         firebase.database().ref("Stories").child(notification.storyID)
                                     .once("value", function(storySnapshot){
