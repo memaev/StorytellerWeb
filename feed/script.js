@@ -311,11 +311,10 @@ function displayStories(stories) {
                                 const notificationInfo = {};
                                 notificationInfo["from"] = firebase.auth().currentUser.uid;
                                 notificationInfo["username"] = username;
-                                notificationInfo["storyID"] = story.id;
+                                notificationInfo["storyId"] = story.id;
                                 notificationInfo["type"] = "comment";
                                 notificationInfo["date"] = new Date().toLocaleString();
                                 notificationInfo["text"] = comment;
-                                notificationInfo["storyTitle"] = story.title;
 
                                 //pushing data to the database
                                 firebase.database().ref("Users").child(story.from).child("notifications")
