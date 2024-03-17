@@ -1,12 +1,13 @@
-body {
-    background-color: #fff;
-  }
   #preloader {
+    display: block;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+  }
+  #preloader.invisible{
+    display: none;
   }
   #loader {
       display: block;
@@ -48,6 +49,7 @@ body {
       -webkit-animation: spin 1.5s linear infinite;
       animation: spin 1.5s linear infinite;
   }
+
   @-webkit-keyframes spin {
       0%   {
           -webkit-transform: rotate(0deg);

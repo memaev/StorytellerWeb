@@ -236,13 +236,26 @@ body.dark .switch::before{
 
 .home{
     position: relative;
-    left: 250px;
+    left: 20vw;
+    height: 100vh;
+    width: (100% - 250px);
+    transition: var(--tran-05);
+}
+
+.notifications{
+    position: relative;
+    left: 30vw;
     height: 100vh;
     width: (100% - 250px);
     transition: var(--tran-05);
 }
 
 .sidebar.close ~ .home{
-    left: 90px;
+    left: 10vw;
+    width: calc(100%-90px);
+}
+
+.sidebar.close ~ .notifications{
+    left: 27vw;
     width: calc(100%-90px);
 }

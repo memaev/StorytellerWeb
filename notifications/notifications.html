@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Storyteller</title>
+    <title>Notifications</title>
+
+    <!-- styles -->
+    <link rel="stylesheet" href="notifications-styles.css"/>
     <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../loader/loader-animation.css">
 
+    <!-- icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../story-item/story-item-styles.css">
 </head>
-
 <body>
+    <div id="preloader" class="invisible">
+        <div id="loader" class="invisible"></div>
+    </div>
 
     <nav class="sidebar">
         <header>
@@ -74,8 +79,8 @@
         </div>
     </nav>
 
-    <section class="home">
-        <div id="stories-list">
+    <section class="notifications">
+        <div id="notifications-list">
             
         </div>
     </section>
@@ -83,10 +88,11 @@
     <!-- firebase imports  -->
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js" type="module"></script>
-
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+    
+    
     <script src="../navbarstartup.js"></script>
-    <script src="script.js"></script>
-</body>
+    <script src="notifications.js"></script>
 
+</body>
 </html>
