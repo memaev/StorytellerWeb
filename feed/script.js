@@ -204,7 +204,7 @@ function displayStories(stories) {
                         const notificationInfo = {};
                         notificationInfo["from"] = firebase.auth().currentUser.uid;
                         notificationInfo["username"] = username;
-                        notificationInfo["storyID"] = story.id;
+                        notificationInfo["storyId"] = story.id;
                         notificationInfo["type"] = "like";
                         notificationInfo["date"] = new Date().toLocaleString();
                         notificationInfo["text"] = "";
